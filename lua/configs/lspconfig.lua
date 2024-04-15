@@ -15,6 +15,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require'lspconfig'.cmake.setup({
+})
+
+lspconfig.gopls.setup({
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
 -- typescript
 lspconfig.tsserver.setup {
   on_attach = on_attach,
