@@ -21,12 +21,12 @@ return {
       },
     },
     config = function()
-      require("java").setup {}
-      require("lspconfig").jdtls.setup {
+      require("java").setup({})
+      require("lspconfig").jdtls.setup({
         on_attach = require("plugins.configs.lspconfig").on_attach,
         capabilities = require("plugins.configs.lspconfig").capabilities,
         filetypes = { "java" },
-      }
+      })
     end,
   },
   {
@@ -37,13 +37,13 @@ return {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
         opts = function()
-          return require "custom.configs.null-ls"
+          return require("custom.configs.null-ls")
         end,
       },
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
     end, -- Override to setup mason-lspconfig
   },
   {
@@ -53,10 +53,16 @@ return {
       vim.keymap.set("n", "<TAB>", ":BufferLineCycleNext<cr>", { desc = "[B]ufferLine Next", silent = true })
       vim.keymap.set("n", "<S-TAB>", ":BufferLineCyclePrev<cr>", { desc = "[B]ufferLine Prev", silent = true })
       vim.keymap.set("n", "<C-d>", ":BufferLineCloseOthers<cr>", { desc = "[B]ufferLine Prev", silent = true })
-      require("bufferline").setup {}
+      require("bufferline").setup({})
     end,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+  },
+  {
+    "Ernest1338/termplug.nvim",
+    config = function()
+      require("termplug").setup()
+    end,
   },
 }
